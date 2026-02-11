@@ -7,7 +7,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
     export HOMEBREW_BIN=/opt/homebrew/bin
 
     export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-    source "$HOMEBREW_DIR/etc/bash_completion.d/git-prompt.sh"
     eval "$(dd-gitsign load-key)"
 
     export GITLAB_TOKEN=$(security find-generic-password -a ${USER} -s gitlab_token -w)
@@ -53,7 +52,11 @@ export GOPROXY="https://depot-read-api-go.us1.ddbuild.io/magicmirror/magicmirror
 # Personal Additions
 
 source "$HOME/.local/bin/git-prompt.sh"
-precmd() { GIT_PS1_SHOWCOLORHINTS=true GIT_PS1_SHOWDIRTYSTATE=true GIT_PS1_SHOWUNTRACKEDFILES= GIT_PS1_SHOWUPSTREAM="auto" __git_ps1 "%F{blue}%1~%F{reset}" " %5F{yellow}\$ %F{reset}" }
+local maybe_host=""
+if [ -n "$SSH_CLIENT"] || [ -n "$SSH_TTY"]; then
+	maybe_host="$HOST "
+fi
+precmd() { GIT_PS1_SHOWCOLORHINTS=true GIT_PS1_SHOWDIRTYSTATE=true GIT_PS1_SHOWUNTRACKEDFILES= GIT_PS1_SHOWUPSTREAM="auto" __git_ps1 "$maybe_hostname%F{blue}%1~%F{reset}" " %5F{yellow}\$ %F{reset}" }
 
 autoload -Uz compinit
 compinit
