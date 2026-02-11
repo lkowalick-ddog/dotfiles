@@ -56,7 +56,7 @@ local maybe_host=""
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 	maybe_host="$HOST "
 fi
-precmd() { GIT_PS1_SHOWCOLORHINTS=true GIT_PS1_SHOWDIRTYSTATE=true GIT_PS1_SHOWUNTRACKEDFILES= GIT_PS1_SHOWUPSTREAM="auto" __git_ps1 "%F{green}$maybe_host%F{reset}%F{blue}%1~%F{reset}" " %5F{yellow}\$ %F{reset}" }
+precmd() { GIT_PS1_SHOWCOLORHINTS=true GIT_PS1_SHOWDIRTYSTATE=true GIT_PS1_SHOWUNTRACKEDFILES= GIT_PS1_SHOWUPSTREAM="auto" __git_ps1 "%F{magenta}$maybe_host%F{reset}%F{blue}%1~%F{reset}" " %5F{yellow}\$ %F{reset}" }
 
 autoload -Uz compinit
 compinit
