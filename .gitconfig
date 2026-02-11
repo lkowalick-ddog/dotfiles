@@ -1,0 +1,42 @@
+[user]
+	name = Lindsay Kowalick
+	email = lindsay.kowalick@datadoghq.com
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+[include]
+	path = /Users/lindsay.kowalick/.config/gitsign/gitconfig
+[core]
+	hooksPath = /usr/local/dd/global_hooks
+	excludesfile = ~/.gitignore_global
+	pager = less --quit-if-one-screen -+X
+	fsmonitor = true
+	untrackedcache = true
+[merge]
+	tool = opendiff
+[mergetool]
+	prompt = false
+	keepBackup = false
+[diff]
+	tool = opendiff
+[difftool]
+	prompt = false
+[feature]
+    manyFiles = true
+[push]
+	default = current
+	autoSetupRemote = true
+[pull]
+	ff = only
+[grep]
+	lineNumber = true
+[fetch]
+	showForcedUpdates = false
+	prune = true
+[advice]
+	fetchShowForcedUpdates = false
+[alias]
+	root = rev-parse --show-toplevel
+[maintenance]
+	repo = /Users/lindsay.kowalick/go/src/github.com/DataDog/dd-source
+[safe]
+	directory = *
